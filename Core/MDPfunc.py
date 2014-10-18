@@ -31,7 +31,7 @@ def ImmediateCost(g1,q1,n1, act, params):
         if 0==G or 0==Q:
             return 0
         if 0==N or 0.0==eta_CONST:
-            return 2**256 # NO WAY TO OFFLOAD SINCE N==0
+            return 13800138000.0 # NO WAY TO OFFLOAD SINCE N==0
         if 1==act: # Remote execution
             return (1.0+aph_r_CONST*((1.0-eta_CONST)**N)*penalty_input)*BaseCostG(G) #The second term is Penalty
 #             print 'NOTE THAT COST OF OFFLOADING HAS CHANGED'

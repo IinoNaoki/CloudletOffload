@@ -24,7 +24,7 @@ Q = 1 + 6
 # N Calculated from LAM and R_COVERAGE at last
 A = 2 # two actions: 0 and 1
 
-# R_COVERAGE purposely left blank
+R_COVERAGE = 10.0
 
 LAM_Q = 0.25
 LAM_C = 0.0005
@@ -36,7 +36,6 @@ BETAH = 0.5
 VELOCITY = 5.0
 
 PENALTY = 20.0
-# PENALTY = 50.0
 
 ALPHA_LOCAL = 1.0
 ALPHA_REMOTE = 1.0
@@ -46,8 +45,8 @@ DELTA = 0.01
 ############################################
 
 
-R_list = [3.0, 6.0, 9.0, 12.0, 15.0, 18.0, 21.0, 24.0, 27.0, 30.0]
-expnum = len(R_list)
+ETA_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+expnum = len(ETA_list)
 
 ParamsSet = [None for _ in range(expnum)]
 TransProbSet = [None for _ in range(expnum)]
@@ -63,13 +62,14 @@ A_opt_set_bell = [None for _ in range(expnum)]
 
 tic = timeit.default_timer()
 
-for ind, r_cur in enumerate(R_list):
+for ind, eta_cur in enumerate(ETA_list):
     print "---- ROUND:", ind+1,
     print "out of", expnum
-    N = GetUpperboundN(LAM_C, r_cur)[0]
-    ParamsSet[ind] = {'G': G, 'Q': Q, 'N': N, \
+    N = GetUpperboundN(LAM_C, R_COVERAGE)[0]
+    ParamsSet[ind] = {'ETA_DIRECT': eta_cur, \
+                      'G': G, 'Q': Q, 'N': N, \
                       'A': A, \
-                      'R_COVERAGE': r_cur, \
+                      'R_COVERAGE': R_COVERAGE, \
                       'LAM_Q': LAM_Q, 'LAM_C': LAM_C, 'LAM_U': LAM_U, \
                       'TAU': TAU, 'C_TOP': C_TOP, 'BETAH':BETAH, 'VELOCITY':VELOCITY, \
                       'PENALTY': PENALTY, \
@@ -114,6 +114,56 @@ for ind, r_cur in enumerate(R_list):
 #         RE[i] = RE[i]*1.0/(1.0*RANDOM_COUNT)
 #     RESset_rnd[ind] = RE
 
+#
+# EXTRA PENALTY TEST
+PEN_list = [0.0, 50.0] # LOW AND HIGH
+
+RESset_bell_PEN_LOW = [None for _ in range(expnum)]
+RESset_bell_PEN_HIGH = [None for _ in range(expnum)]
+
+for ind, eta_cur in enumerate(ETA_list):
+    print "---- EXTRA ROUND:", ind+1,
+    print "out of", expnum
+    N = GetUpperboundN(LAM_C, R_COVERAGE)[0]
+    
+    # low pen
+    Params_PEN_LOW = {'ETA_DIRECT': eta_cur, \
+                      'G': G, 'Q': Q, 'N': N, \
+                      'A': A, \
+                      'R_COVERAGE': R_COVERAGE, \
+                      'LAM_Q': LAM_Q, 'LAM_C': LAM_C, 'LAM_U': LAM_U, \
+                      'TAU': TAU, 'C_TOP': C_TOP, 'BETAH':BETAH, 'VELOCITY':VELOCITY, \
+                      'PENALTY': PEN_list[0], \
+                      'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
+                      'GAM': GAM, 'DELTA': DELTA
+                      }
+
+    TransProb_PEN_LOW = BuildTransMatrix_Para(Params_PEN_LOW)
+    
+    # Bellman
+    V_bell, A_bell = BellmanSolver(TransProb_PEN_LOW, Params_PEN_LOW)
+    RESset_bell_PEN_LOW[ind] = GetOptResultList(V_bell,A_bell, TransProb_PEN_LOW, Params_PEN_LOW)
+    
+    # high pen
+    Params_PEN_HIGH = {'ETA_DIRECT': eta_cur, \
+                      'G': G, 'Q': Q, 'N': N, \
+                      'A': A, \
+                      'R_COVERAGE': R_COVERAGE, \
+                      'LAM_Q': LAM_Q, 'LAM_C': LAM_C, 'LAM_U': LAM_U, \
+                      'TAU': TAU, 'C_TOP': C_TOP, 'BETAH':BETAH, 'VELOCITY':VELOCITY, \
+                      'PENALTY': PEN_list[1], \
+                      'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
+                      'GAM': GAM, 'DELTA': DELTA
+                      }
+
+    TransProb_PEN_HIGH = BuildTransMatrix_Para(Params_PEN_HIGH)
+    
+    # Bellman
+    V_bell, A_bell = BellmanSolver(TransProb_PEN_HIGH, Params_PEN_HIGH)
+    RESset_bell_PEN_HIGH[ind] = GetOptResultList(V_bell,A_bell, TransProb_PEN_HIGH, Params_PEN_HIGH)
+
+#
+
     
 toc = timeit.default_timer()
 print
@@ -121,14 +171,16 @@ print "Total time spent: ",
 print toc - tic
     
 print "Dumping...",
-pickle.dump(expnum, open("../results/R_changing/expnum","w"))
-pickle.dump(ParamsSet, open("../results/R_changing/Paramsset","w"))
-pickle.dump(R_list, open("../results/R_changing/xaxis","w"))
-pickle.dump(RESset_bell, open("../results/R_changing/bell","w"))
-pickle.dump(RESset_myo, open("../results/R_changing/myo","w"))
-pickle.dump(RESset_rnd, open("../results/R_changing/rnd","w"))
-pickle.dump(RESset_zero, open("../results/R_changing/zero","w"))
-pickle.dump(RESset_one, open("../results/R_changing/one","w"))
-pickle.dump(V_opt_set_bell, open("../results/R_changing/V_opt_bell","w"))
-pickle.dump(A_opt_set_bell, open("../results/R_changing/A_opt_bell","w"))
+pickle.dump(expnum, open("../results/ETA_changing/expnum","w"))
+pickle.dump(ParamsSet, open("../results/ETA_changing/Paramsset","w"))
+pickle.dump(ETA_list, open("../results/ETA_changing/xaxis","w"))
+pickle.dump(RESset_bell, open("../results/ETA_changing/bell","w"))
+pickle.dump(RESset_bell_PEN_LOW, open("../results/ETA_changing/bell_pen_low","w"))
+pickle.dump(RESset_bell_PEN_HIGH, open("../results/ETA_changing/bell_pen_high","w"))
+pickle.dump(RESset_myo, open("../results/ETA_changing/myo","w"))
+pickle.dump(RESset_rnd, open("../results/ETA_changing/rnd","w"))
+pickle.dump(RESset_zero, open("../results/ETA_changing/zero","w"))
+pickle.dump(RESset_one, open("../results/ETA_changing/one","w"))
+pickle.dump(V_opt_set_bell, open("../results/ETA_changing/V_opt_bell","w"))
+pickle.dump(A_opt_set_bell, open("../results/ETA_changing/A_opt_bell","w"))
 print "Finished"

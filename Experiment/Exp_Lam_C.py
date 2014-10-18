@@ -24,10 +24,12 @@ Q = 1 + 6
 # N Calculated from LAM and R_COVERAGE at last
 A = 2 # two actions: 0 and 1
 
-# R_COVERAGE purposely left blank
+# R_COVERAGE = 15.0
+R_COVERAGE = 10.0
 
 LAM_Q = 0.25
-LAM_C = 0.0005
+# LAM_C = 0.0005
+# LAM_C LEFT BLANK IN PURPOSE
 LAM_U = 0.0001
 
 TAU = 0.5
@@ -46,8 +48,8 @@ DELTA = 0.01
 ############################################
 
 
-R_list = [3.0, 6.0, 9.0, 12.0, 15.0, 18.0, 21.0, 24.0, 27.0, 30.0]
-expnum = len(R_list)
+LAM_C_list = [0.0001, 0.0005, 0.0010, 0.0015, 0.0020, 0.0025, 0.0030, 0.0035, 0.0040, 0.0045]
+expnum = len(LAM_C_list)
 
 ParamsSet = [None for _ in range(expnum)]
 TransProbSet = [None for _ in range(expnum)]
@@ -63,14 +65,14 @@ A_opt_set_bell = [None for _ in range(expnum)]
 
 tic = timeit.default_timer()
 
-for ind, r_cur in enumerate(R_list):
+for ind, lam_c_cur in enumerate(LAM_C_list):
     print "---- ROUND:", ind+1,
     print "out of", expnum
-    N = GetUpperboundN(LAM_C, r_cur)[0]
+    N = GetUpperboundN(lam_c_cur, R_COVERAGE)[0]
     ParamsSet[ind] = {'G': G, 'Q': Q, 'N': N, \
                       'A': A, \
-                      'R_COVERAGE': r_cur, \
-                      'LAM_Q': LAM_Q, 'LAM_C': LAM_C, 'LAM_U': LAM_U, \
+                      'R_COVERAGE': R_COVERAGE, \
+                      'LAM_Q': LAM_Q, 'LAM_C': lam_c_cur, 'LAM_U': LAM_U, \
                       'TAU': TAU, 'C_TOP': C_TOP, 'BETAH':BETAH, 'VELOCITY':VELOCITY, \
                       'PENALTY': PENALTY, \
                       'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
@@ -80,25 +82,25 @@ for ind, r_cur in enumerate(R_list):
     TransProbSet[ind] = BuildTransMatrix_Para(ParamsSet[ind])
     # BUILD TRANS MAT _ LINEAR #
 #     TransProbSet[ind] = BuildTransMatrix(ParamsSet[ind])
-    
+     
     # Bellman
     V_bell, A_bell = BellmanSolver(TransProbSet[ind], ParamsSet[ind])
     V_opt_set_bell[ind] = V_bell
     A_opt_set_bell[ind] = A_bell 
     RESset_bell[ind] = GetOptResultList(V_bell,A_bell, TransProbSet[ind], ParamsSet[ind])
-      
+       
     # Myopic
     V_myo, A_myo = NaiveSolver_Myopic(TransProbSet[ind], ParamsSet[ind])
     RESset_myo[ind] = GetOptResultList(V_myo,A_myo, TransProbSet[ind], ParamsSet[ind])
-      
+       
     # Zero
     V_zero, A_zero = NaiveSolver_Always(TransProbSet[ind], 0, ParamsSet[ind])
     RESset_zero[ind] = GetOptResultList(V_zero,A_zero, TransProbSet[ind], ParamsSet[ind])
-    
+     
     # One
     V_one, A_one = NaiveSolver_Always(TransProbSet[ind], 1, ParamsSet[ind])
     RESset_one[ind] = GetOptResultList(V_one,A_one, TransProbSet[ind], ParamsSet[ind])
-     
+      
 #     # rndmzd
 #     RANDOM_COUNT = 10
 #     RE = []
@@ -121,14 +123,14 @@ print "Total time spent: ",
 print toc - tic
     
 print "Dumping...",
-pickle.dump(expnum, open("../results/R_changing/expnum","w"))
-pickle.dump(ParamsSet, open("../results/R_changing/Paramsset","w"))
-pickle.dump(R_list, open("../results/R_changing/xaxis","w"))
-pickle.dump(RESset_bell, open("../results/R_changing/bell","w"))
-pickle.dump(RESset_myo, open("../results/R_changing/myo","w"))
-pickle.dump(RESset_rnd, open("../results/R_changing/rnd","w"))
-pickle.dump(RESset_zero, open("../results/R_changing/zero","w"))
-pickle.dump(RESset_one, open("../results/R_changing/one","w"))
-pickle.dump(V_opt_set_bell, open("../results/R_changing/V_opt_bell","w"))
-pickle.dump(A_opt_set_bell, open("../results/R_changing/A_opt_bell","w"))
+pickle.dump(expnum, open("../results/LAM_C_changing/expnum","w"))
+pickle.dump(ParamsSet, open("../results/LAM_C_changing/Paramsset","w"))
+pickle.dump(LAM_C_list, open("../results/LAM_C_changing/xaxis","w"))
+pickle.dump(RESset_bell, open("../results/LAM_C_changing/bell","w"))
+pickle.dump(RESset_myo, open("../results/LAM_C_changing/myo","w"))
+pickle.dump(RESset_rnd, open("../results/LAM_C_changing/rnd","w"))
+pickle.dump(RESset_zero, open("../results/LAM_C_changing/zero","w"))
+pickle.dump(RESset_one, open("../results/LAM_C_changing/one","w"))
+pickle.dump(V_opt_set_bell, open("../results/LAM_C_changing/V_opt_bell","w"))
+pickle.dump(A_opt_set_bell, open("../results/LAM_C_changing/A_opt_bell","w"))
 print "Finished"
