@@ -11,12 +11,6 @@ Created on 17 Oct, 2014
 # TAU = 0.5
 # VELOCITY = 5.0
 # aph_l_CONST params['ALPHA_LOCAL']
-# aph_r_CONST params['ALPHA_REMOTE']
+# aph_PEN_CONST params['ALPHA_PENEMOTE']
 # PENALTY
 
-
-import numpy as np
-A_linear = [1,1,2,4,2,1,1,6,7,0]
-_act = A_linear.count(1)
-
-print _act

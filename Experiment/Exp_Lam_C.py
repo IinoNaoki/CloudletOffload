@@ -24,8 +24,8 @@ Q = 1 + 6
 # N Calculated from LAM and R_COVERAGE at last
 A = 2 # two actions: 0 and 1
 
-# R_COVERAGE = 15.0
 R_COVERAGE = 10.0
+# R_COVERAGE = 15.0
 
 LAM_Q = 0.25
 # LAM_C = 0.0005
@@ -37,18 +37,20 @@ C_TOP = 2
 BETAH = 0.5
 VELOCITY = 5.0
 
-PENALTY = 20.0
-# PENALTY = 50.0
+# PENALTY = 10.0
+# PENALTY = 1.0
+PENALTY = 2.5
 
-ALPHA_LOCAL = 1.0
-ALPHA_REMOTE = 1.0
+# ALPHA_LOCAL = 1.0
+# ALPHA_REMOTE = 1.0
 
 GAM = 0.80
 DELTA = 0.01
 ############################################
 
 
-LAM_C_list = [0.0001, 0.0005, 0.0010, 0.0015, 0.0020, 0.0025, 0.0030, 0.0035, 0.0040, 0.0045]
+# LAM_C_list = [0.0001, 0.0005, 0.0010, 0.0015, 0.0020, 0.0025, 0.0030, 0.0035, 0.0040, 0.0045]
+LAM_C_list = [0.0002, 0.0004, 0.0006, 0.0008, 0.0010, 0.0012, 0.0014, 0.0016, 0.0018, 0.0020]
 expnum = len(LAM_C_list)
 
 ParamsSet = [None for _ in range(expnum)]
@@ -75,7 +77,7 @@ for ind, lam_c_cur in enumerate(LAM_C_list):
                       'LAM_Q': LAM_Q, 'LAM_C': lam_c_cur, 'LAM_U': LAM_U, \
                       'TAU': TAU, 'C_TOP': C_TOP, 'BETAH':BETAH, 'VELOCITY':VELOCITY, \
                       'PENALTY': PENALTY, \
-                      'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
+#                       'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
                       'GAM': GAM, 'DELTA': DELTA
                       }
     # BUILD TRANS MAT _ PARALELL #
@@ -88,7 +90,7 @@ for ind, lam_c_cur in enumerate(LAM_C_list):
     V_opt_set_bell[ind] = V_bell
     A_opt_set_bell[ind] = A_bell 
     RESset_bell[ind] = GetOptResultList(V_bell,A_bell, TransProbSet[ind], ParamsSet[ind])
-       
+        
     # Myopic
     V_myo, A_myo = NaiveSolver_Myopic(TransProbSet[ind], ParamsSet[ind])
     RESset_myo[ind] = GetOptResultList(V_myo,A_myo, TransProbSet[ind], ParamsSet[ind])
@@ -101,20 +103,20 @@ for ind, lam_c_cur in enumerate(LAM_C_list):
     V_one, A_one = NaiveSolver_Always(TransProbSet[ind], 1, ParamsSet[ind])
     RESset_one[ind] = GetOptResultList(V_one,A_one, TransProbSet[ind], ParamsSet[ind])
       
-#     # rndmzd
-#     RANDOM_COUNT = 10
-#     RE = []
-#     for rcount in range(RANDOM_COUNT):
-#         print "RANDOM: %d/%d running..." % (rcount+1,RANDOM_COUNT)
-#         V_rnd, A_rnd = NaiveSolver_Rnd(TransProbSet[ind], ParamsSet[ind])
-#         RE_rnd = GetOptResultList(V_rnd,A_rnd, TransProbSet[ind], ParamsSet[ind])
-#         if rcount == 0:
-#             RE = [0.0 for _ in range(len(RE_rnd))]
-#         for i in range(len(RE_rnd)):
-#             RE[i] = RE[i] + RE_rnd[i]
-#     for i in range(len(RE)):
-#         RE[i] = RE[i]*1.0/(1.0*RANDOM_COUNT)
-#     RESset_rnd[ind] = RE
+    # rndmzd
+    RANDOM_COUNT = 20
+    RE = []
+    for rcount in range(RANDOM_COUNT):
+        print "RANDOM: %d/%d running..." % (rcount+1,RANDOM_COUNT)
+        V_rnd, A_rnd = NaiveSolver_Rnd(TransProbSet[ind], ParamsSet[ind])
+        RE_rnd = GetOptResultList(V_rnd,A_rnd, TransProbSet[ind], ParamsSet[ind])
+        if rcount == 0:
+            RE = [0.0 for _ in range(len(RE_rnd))]
+        for i in range(len(RE_rnd)):
+            RE[i] = RE[i] + RE_rnd[i]
+    for i in range(len(RE)):
+        RE[i] = RE[i]*1.0/(1.0*RANDOM_COUNT)
+    RESset_rnd[ind] = RE
 
     
 toc = timeit.default_timer()

@@ -25,6 +25,7 @@ Q = 1 + 6
 A = 2 # two actions: 0 and 1
 
 R_COVERAGE = 10.0
+# R_COVERAGE = 15.0
 
 LAM_Q = 0.25
 LAM_C = 0.0005
@@ -35,10 +36,11 @@ C_TOP = 2
 BETAH = 0.5
 VELOCITY = 5.0
 
-PENALTY = 20.0
+PENALTY = 2.5
+# PENALTY = 5.0
 
-ALPHA_LOCAL = 1.0
-ALPHA_REMOTE = 1.0
+# ALPHA_LOCAL = 1.0
+# ALPHA_REMOTE = 1.0
 
 GAM = 0.80
 DELTA = 0.01
@@ -46,6 +48,7 @@ DELTA = 0.01
 
 
 ETA_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+# ETA_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 expnum = len(ETA_list)
 
 ParamsSet = [None for _ in range(expnum)]
@@ -73,7 +76,7 @@ for ind, eta_cur in enumerate(ETA_list):
                       'LAM_Q': LAM_Q, 'LAM_C': LAM_C, 'LAM_U': LAM_U, \
                       'TAU': TAU, 'C_TOP': C_TOP, 'BETAH':BETAH, 'VELOCITY':VELOCITY, \
                       'PENALTY': PENALTY, \
-                      'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
+#                       'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
                       'GAM': GAM, 'DELTA': DELTA
                       }
     # BUILD TRANS MAT _ PARALELL #
@@ -99,24 +102,24 @@ for ind, eta_cur in enumerate(ETA_list):
     V_one, A_one = NaiveSolver_Always(TransProbSet[ind], 1, ParamsSet[ind])
     RESset_one[ind] = GetOptResultList(V_one,A_one, TransProbSet[ind], ParamsSet[ind])
      
-#     # rndmzd
-#     RANDOM_COUNT = 10
-#     RE = []
-#     for rcount in range(RANDOM_COUNT):
-#         print "RANDOM: %d/%d running..." % (rcount+1,RANDOM_COUNT)
-#         V_rnd, A_rnd = NaiveSolver_Rnd(TransProbSet[ind], ParamsSet[ind])
-#         RE_rnd = GetOptResultList(V_rnd,A_rnd, TransProbSet[ind], ParamsSet[ind])
-#         if rcount == 0:
-#             RE = [0.0 for _ in range(len(RE_rnd))]
-#         for i in range(len(RE_rnd)):
-#             RE[i] = RE[i] + RE_rnd[i]
-#     for i in range(len(RE)):
-#         RE[i] = RE[i]*1.0/(1.0*RANDOM_COUNT)
-#     RESset_rnd[ind] = RE
+    # rndmzd
+    RANDOM_COUNT = 20
+    RE = []
+    for rcount in range(RANDOM_COUNT):
+        print "RANDOM: %d/%d running..." % (rcount+1,RANDOM_COUNT)
+        V_rnd, A_rnd = NaiveSolver_Rnd(TransProbSet[ind], ParamsSet[ind])
+        RE_rnd = GetOptResultList(V_rnd,A_rnd, TransProbSet[ind], ParamsSet[ind])
+        if rcount == 0:
+            RE = [0.0 for _ in range(len(RE_rnd))]
+        for i in range(len(RE_rnd)):
+            RE[i] = RE[i] + RE_rnd[i]
+    for i in range(len(RE)):
+        RE[i] = RE[i]*1.0/(1.0*RANDOM_COUNT)
+    RESset_rnd[ind] = RE
 
 #
 # EXTRA PENALTY TEST
-PEN_list = [0.0, 50.0] # LOW AND HIGH
+PEN_list = [0.0, 5.0] # LOW AND HIGH
 
 RESset_bell_PEN_LOW = [None for _ in range(expnum)]
 RESset_bell_PEN_HIGH = [None for _ in range(expnum)]
@@ -134,7 +137,7 @@ for ind, eta_cur in enumerate(ETA_list):
                       'LAM_Q': LAM_Q, 'LAM_C': LAM_C, 'LAM_U': LAM_U, \
                       'TAU': TAU, 'C_TOP': C_TOP, 'BETAH':BETAH, 'VELOCITY':VELOCITY, \
                       'PENALTY': PEN_list[0], \
-                      'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
+#                       'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
                       'GAM': GAM, 'DELTA': DELTA
                       }
 
@@ -152,7 +155,7 @@ for ind, eta_cur in enumerate(ETA_list):
                       'LAM_Q': LAM_Q, 'LAM_C': LAM_C, 'LAM_U': LAM_U, \
                       'TAU': TAU, 'C_TOP': C_TOP, 'BETAH':BETAH, 'VELOCITY':VELOCITY, \
                       'PENALTY': PEN_list[1], \
-                      'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
+#                       'ALPHA_LOCAL': ALPHA_LOCAL, 'ALPHA_REMOTE': ALPHA_REMOTE, \
                       'GAM': GAM, 'DELTA': DELTA
                       }
 

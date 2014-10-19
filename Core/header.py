@@ -191,9 +191,9 @@ def GetUpperboundN(LAM, R_COVERAGE):
             _n = _n + 1
 
 def N_mat(n1,n2, params):
-    LAM_C = params['LAM_C']
-    R_COVERAGE = params['R_COVERAGE']
-    _N, _residual = GetUpperboundN(LAM_C, R_COVERAGE)
+    _LAM_C = params['LAM_C']
+    _R_COVERAGE = params['R_COVERAGE']
+    _N, _residual = GetUpperboundN(_LAM_C, _R_COVERAGE)
     
     if n1 not in range(_N):
         return 0.0
@@ -201,21 +201,21 @@ def N_mat(n1,n2, params):
         if n2 not in range(_N):
             return 0.0
         elif n2==_N-1:
-            return P_SpatialPoisson_Pure(n2, LAM_C, R_COVERAGE) + _residual
+            return P_SpatialPoisson_Pure(n2, _LAM_C, _R_COVERAGE) + _residual
         else:
-            return P_SpatialPoisson_Pure(n2, LAM_C, R_COVERAGE)
+            return P_SpatialPoisson_Pure(n2, _LAM_C, _R_COVERAGE)
 
 
 def OverallTransProb(g1,q1,n1, g2,q2,n2, act, params):
     G_max_CONST = params['G']
     Q_max_CONST = params['Q']
-    LAM_C = params['LAM_C']
-    R_COVERAGE = params['R_COVERAGE']
-    _N_max, _residual = GetUpperboundN(LAM_C, R_COVERAGE)
+#     LAM_C = params['LAM_C']
+#     R_COVERAGE = params['R_COVERAGE']
+    N_max = params['N']
     
-    if g1>(G_max_CONST-1) or g2>(G_max_CONST-1) or q1>(Q_max_CONST-1) or q2>(Q_max_CONST-1) or n1>(_N_max-1) or n2>(_N_max-1):
-            print "my error signal, out of bound. Pos - header.py: OverallTransProb()"
-            exit(-1)
+    if g1>(G_max_CONST-1) or g2>(G_max_CONST-1) or q1>(Q_max_CONST-1) or q2>(Q_max_CONST-1) or n1>(N_max-1) or n2>(N_max-1):
+        print "my error signal, out of bound. Pos - header.py: OverallTransProb()"
+        exit(-1)
     else:
         return 1.0 * G_and_Q_mat(g1,q1, g2,q2, n1,act, params) * N_mat(n1,n2, params)
 

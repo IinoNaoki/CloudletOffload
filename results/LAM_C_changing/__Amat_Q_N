@@ -1,0 +1,650 @@
+
+state G = 0
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+
+
+state G = 1
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+
+
+state G = 2
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   1   1  
+
+
+state G = 3
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0  
+0   0   0  
+0   0   1  
+0   0   1  
+0   0   1  
+0   1   1  
+0   1   1  
+
+
+state G = 4
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+0   0   0  
+
+
+state G = 0
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+
+
+state G = 1
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+
+
+state G = 2
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   1  
+0   1   1   1  
+
+
+state G = 3
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0  
+0   0   0   1  
+0   0   1   1  
+0   0   1   1  
+0   0   1   1  
+0   1   1   1  
+0   1   1   1  
+
+
+state G = 4
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+0   0   0   0  
+
+
+state G = 0
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+
+
+state G = 1
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   1  
+0   0   0   0   1  
+
+
+state G = 2
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   1  
+0   0   0   1   1  
+0   0   1   1   1  
+
+
+state G = 3
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0  
+0   0   0   1   1  
+0   0   1   1   1  
+0   0   1   1   1  
+0   0   1   1   1  
+0   1   1   1   1  
+0   1   1   1   1  
+
+
+state G = 4
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+0   0   0   0   0  
+
+
+state G = 0
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+
+
+state G = 1
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   1  
+0   0   0   0   0   1  
+0   0   0   0   1   1  
+0   0   0   0   1   1  
+
+
+state G = 2
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   1  
+0   0   0   0   1   1  
+0   0   0   1   1   1  
+0   0   1   1   1   1  
+
+
+state G = 3
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0  
+0   0   0   1   1   1  
+0   0   1   1   1   1  
+0   0   1   1   1   1  
+0   0   1   1   1   1  
+0   1   1   1   1   1  
+0   1   1   1   1   1  
+
+
+state G = 4
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+
+
+state G = 0
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+
+
+state G = 1
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   1  
+0   0   0   0   0   1  
+0   0   0   0   1   1  
+0   0   0   0   1   1  
+
+
+state G = 2
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   1  
+0   0   0   0   1   1  
+0   0   0   1   1   1  
+0   0   1   1   1   1  
+
+
+state G = 3
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0  
+0   0   0   1   1   1  
+0   0   1   1   1   1  
+0   0   1   1   1   1  
+0   0   1   1   1   1  
+0   1   1   1   1   1  
+0   1   1   1   1   1  
+
+
+state G = 4
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+0   0   0   0   0   0  
+
+
+state G = 0
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+
+
+state G = 1
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   1  
+0   0   0   0   0   1   1  
+0   0   0   0   0   1   1  
+0   0   0   0   1   1   1  
+0   0   0   0   1   1   1  
+
+
+state G = 2
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   1  
+0   0   0   0   0   1   1  
+0   0   0   0   1   1   1  
+0   0   0   0   1   1   1  
+0   0   0   1   1   1   1  
+
+
+state G = 3
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0  
+0   0   0   1   1   1   1  
+0   0   1   1   1   1   1  
+0   0   1   1   1   1   1  
+0   0   1   1   1   1   1  
+0   1   1   1   1   1   1  
+0   1   1   1   1   1   1  
+
+
+state G = 4
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+
+
+state G = 0
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+
+
+state G = 1
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   1  
+0   0   0   0   0   1   1  
+0   0   0   0   0   1   1  
+0   0   0   0   1   1   1  
+0   0   0   0   1   1   1  
+
+
+state G = 2
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   1  
+0   0   0   0   0   1   1  
+0   0   0   0   1   1   1  
+0   0   0   0   1   1   1  
+0   0   0   1   1   1   1  
+
+
+state G = 3
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0  
+0   0   0   1   1   1   1  
+0   0   1   1   1   1   1  
+0   0   1   1   1   1   1  
+0   0   1   1   1   1   1  
+0   1   1   1   1   1   1  
+0   1   1   1   1   1   1  
+
+
+state G = 4
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+0   0   0   0   0   0   0  
+
+
+state G = 0
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+
+
+state G = 1
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   1  
+0   0   0   0   0   0   1   1  
+0   0   0   0   0   1   1   1  
+0   0   0   0   0   1   1   1  
+0   0   0   0   1   1   1   1  
+0   0   0   0   1   1   1   1  
+
+
+state G = 2
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   1  
+0   0   0   0   0   0   1   1  
+0   0   0   0   0   1   1   1  
+0   0   0   0   1   1   1   1  
+0   0   0   0   1   1   1   1  
+0   0   0   1   1   1   1   1  
+
+
+state G = 3
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0  
+0   0   0   1   1   1   1   1  
+0   0   1   1   1   1   1   1  
+0   0   1   1   1   1   1   1  
+0   0   1   1   1   1   1   1  
+0   1   1   1   1   1   1   1  
+0   1   1   1   1   1   1   1  
+
+
+state G = 4
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   1  
+
+
+state G = 0
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+
+
+state G = 1
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   1  
+0   0   0   0   0   0   1   1  
+0   0   0   0   0   1   1   1  
+0   0   0   0   0   1   1   1  
+0   0   0   0   1   1   1   1  
+0   0   0   0   1   1   1   1  
+
+
+state G = 2
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   1  
+0   0   0   0   0   0   1   1  
+0   0   0   0   0   1   1   1  
+0   0   0   0   1   1   1   1  
+0   0   0   0   1   1   1   1  
+0   0   0   1   1   1   1   1  
+
+
+state G = 3
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0  
+0   0   0   1   1   1   1   1  
+0   0   1   1   1   1   1   1  
+0   0   1   1   1   1   1   1  
+0   0   1   1   1   1   1   1  
+0   1   1   1   1   1   1   1  
+0   1   1   1   1   1   1   1  
+
+
+state G = 4
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   1  
+
+
+state G = 0
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0   0  
+
+
+state G = 1
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   1   1  
+0   0   0   0   0   0   1   1   1  
+0   0   0   0   0   1   1   1   1  
+0   0   0   0   0   1   1   1   1  
+0   0   0   0   0   1   1   1   1  
+0   0   0   0   1   1   1   1   1  
+
+
+state G = 2
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   1   1  
+0   0   0   0   0   0   1   1   1  
+0   0   0   0   0   1   1   1   1  
+0   0   0   0   1   1   1   1   1  
+0   0   0   0   1   1   1   1   1  
+0   0   0   0   1   1   1   1   1  
+
+
+state G = 3
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0   0  
+0   0   0   1   1   1   1   1   1  
+0   0   1   1   1   1   1   1   1  
+0   0   1   1   1   1   1   1   1  
+0   0   1   1   1   1   1   1   1  
+0   1   1   1   1   1   1   1   1  
+0   1   1   1   1   1   1   1   1  
+
+
+state G = 4
+---ACTION MATRIX---
+Line:  q
+Column:  n
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0   0  
+0   0   0   0   0   0   0   0   1  
+0   0   0   0   0   0   0   0   1  
+0   0   0   0   0   0   0   1   1  
+
