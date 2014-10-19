@@ -79,7 +79,7 @@ plot(x_axis_list,y_a1_rnd,color='black',markerfacecolor='none', markeredgecolor=
 xlabel('Penalty $c_{pen}$' ,fontsize=14)
 ylabel('Offloading rate',fontsize=16)
 subplots_adjust(top=0.93,bottom=0.16,left=0.12, right=0.95)
-legend(loc=(0.6,0.58),fancybox=True)
+legend(loc='best',fancybox=True)
 locs, labels = plt.yticks()
 plt.setp(labels, rotation=90)
 pp = PdfPages('../results/PEN_changing/figure1.pdf')

@@ -104,7 +104,7 @@ for ind, lam_c_cur in enumerate(LAM_C_list):
     RESset_one[ind] = GetOptResultList(V_one,A_one, TransProbSet[ind], ParamsSet[ind])
       
     # rndmzd
-    RANDOM_COUNT = 20
+    RANDOM_COUNT = 30
     RE = []
     for rcount in range(RANDOM_COUNT):
         print "RANDOM: %d/%d running..." % (rcount+1,RANDOM_COUNT)
