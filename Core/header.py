@@ -15,7 +15,6 @@ from multiprocessing import Process, Queue, Array, RawArray
 import timeit
 import time
 
-
 '''
 Pre-defined functions:
 WHETHER THE PHASE IS FINISHING PHASE
